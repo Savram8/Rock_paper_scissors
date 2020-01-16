@@ -1,0 +1,127 @@
+html <!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock Paper Scissors</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+      <script>
+
+            var playerScore = 0;
+            var computerScore = 0;
+        
+          function computerSelection (){
+              choice = (Math.floor(Math.random() * 3)+ 1);
+              
+              if (choice == 1){
+                  return "rock"
+              }
+              else if (choice == 2){
+                  return "paper"
+              }
+              else{
+                  return "scissor"
+            }
+          }
+           
+
+          
+          function singleRound(playerChoice, computerChoice){
+
+            if (playerChoice == "rock" && computerChoice == "rock") {
+                alert("Player Choice: Rock \n Computer Choice: Rock ")
+                alert("Tie game");
+                ++computerScore;
+                ++playerScore;
+            }
+            else if (playerChoice == "paper" && computerChoice == "paper"){
+                alert("Player Choice: Paper \n Computer Choice: Paper ")
+                alert("Tie game");
+                ++computerScore;
+                ++playerScore;
+            }
+            else if (playerChoice == "scissor" && computerChoice == "scissor"){
+                alert("Player Choice: Scissor \n Computer Choice: Scissor ")
+                alert("Tie game");
+                ++computerScore;
+                ++playerScore;
+            }
+            else if (playerChoice == "rock" && computerChoice == "paper"){
+                alert("Player Choice: Rock \n Computer Choice: Paper ")
+                alert("Paper covers Rock! You lose!");
+                ++computerScore;
+            }
+            else if (playerChoice == "rock" && computerChoice == "scissor"){
+                alert("Player Choice: Rock \n Computer Choice: Scissor ")
+                alert("Rock Crushes Scissor! You Win!");
+                ++playerScore;
+            }
+            else if (playerChoice == "paper" && computerChoice == "rock"){
+                alert("Player Choice: Paper \n Computer Choice: Rock ")
+                alert("Paper covers Rock! You Win!");
+                ++playerScore;
+            }
+            else if (playerChoice == "paper" && computerChoice == "scissor"){
+                alert("Player Choice: Paper \n Computer Choice: Scissor ")
+                alert("Scissor cuts Paper! You Lose!");
+                ++computerScore;
+            }
+            else if (playerChoice == "scissor" && computerChoice == "paper"){
+                alert("Player Choice: Scissor \n Computer Choice: Paper ")
+                alert("Scissor cuts Paper! You Win!");
+                ++playerScore;
+            }
+            else if (playerChoice == "scissor" && computerChoice == "rock"){
+                alert("Player Choice: Scissor \n Computer Choice: Rock ")
+                alert("Rock crushes Scissor! You Lose!");
+                ++computerScore;
+            }
+            else{
+                return "Error Message"
+            }
+          }
+
+          function isWinner(y){
+              if (y == 6 && playerScore > computerScore){
+                  alert("You won the game!")
+                  alert("Player Score: " + playerScore + "\n Computer Score: " + computerScore);
+              }
+              else if (y ==6 && playerScore < computerScore){
+                  alert("You lost the game!")
+                  alert("Computer Score: " + computerScore + "\n Player Score: " +  computerScore);
+              }
+              else if ( y == 6 && (playerScore == computerScore)){
+                  alert("It is a tie.")
+                  alert("Computer Score: " + computerScore + "\n Player Score: " + computerScore)
+              }
+          }
+
+          function game(){
+            var x = 1;
+            while( x >= 1 && x <= 5 ){
+                ++x;
+                var player = prompt("Choose Rock, Paper, Or Scissor: ");
+                var playerChoice = player.toLowerCase();
+                singleRound(playerChoice, computerSelection());
+                isWinner(x);
+            
+            }
+            
+          }
+
+        alert("Welcome to Rock Paper Scissors! Best out of 6 games wins! Created by Stefan Avram")
+          game();
+  
+        </script>
+
+
+
+    </body>
+</html>
